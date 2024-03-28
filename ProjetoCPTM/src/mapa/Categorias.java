@@ -12,6 +12,7 @@ public class Categorias {
 		this.descricao = descricao;
 	}
 
+	//getters e setters
 	public String getId() {
 		return id;
 	}
@@ -36,6 +37,6 @@ public class Categorias {
 		this.descricao = descricao;
 	}
 	
-	//getters e setters
+	
 	
 }

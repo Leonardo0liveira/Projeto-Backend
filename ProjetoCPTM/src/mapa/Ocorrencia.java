@@ -1,14 +1,16 @@
 package mapa;
-
 import java.util.List;
 import java.util.ArrayList;
+import mapa.DateTime;
 
 //sugestão
-public class Ocorrencia {
+public class Ocorrencia extends GeraOcorrencia{
 	private String id;
 	private String tipo;
 	private String descricao;
 	private Estacao estacao;
+	private String status;
+	private DateTime horario;
 	private List<Categorias> categoria;
 	
 	public Ocorrencia(String id, String tipo, String descricao,Estacao estacao){
@@ -58,7 +60,7 @@ public class Ocorrencia {
 		this.categoria = categoria;
 	}
 	
-	//getters e setters
+
 	
 
 }

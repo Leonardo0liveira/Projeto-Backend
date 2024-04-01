@@ -12,6 +12,7 @@ public class Categorias {
 		this.descricao = descricao;
 	}
 
+	//getters e setters
 	public String getId() {
 		return id;
 	}
@@ -35,7 +36,5 @@ public class Categorias {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
-	//getters e setters
 	
 }

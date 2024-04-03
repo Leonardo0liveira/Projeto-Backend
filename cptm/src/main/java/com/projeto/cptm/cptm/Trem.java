@@ -1,8 +1,14 @@
 package com.projeto.cptm.cptm;
 //sugestão
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
 import java.util.ArrayList;
 
+@JsonPropertyOrder({"id", "nome", "capacidade", "estacoes"})
 public class Trem {
 	private String id;
 	private String nome;
@@ -16,4 +22,37 @@ public class Trem {
 		this.estacoes = new ArrayList<>();
 	}
 	//getters e setters
+	@JsonGetter("id")
+	public String getId() {
+		return id;
+	}
+	@JsonProperty("id")
+	public void setId(String id) {
+		this.id = id;
+	}
+	@JsonGetter("nome")
+	public String getNome() {
+		return nome;
+	}
+	@JsonProperty("nome")
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	@JsonGetter("capacidade")
+	public int getCapacidade() {
+		return capacidade;
+	}
+	@JsonProperty("capacidade")
+	public void setCapacidade(int capacidade) {
+		this.capacidade = capacidade;
+	}
+	@JsonGetter("estacoes")
+	public List<Estacao> getEstacoes() {
+		return estacoes;
+	}
+	@JsonProperty("estacoes")
+	public void setEstacoes(List<Estacao> estacoes) {
+		this.estacoes = estacoes;
+	}
+	
 }

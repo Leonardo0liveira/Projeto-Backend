@@ -1,6 +1,10 @@
 package com.projeto.cptm.cptm;
 
-//sugestão
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({"id", "tipo", "descricao"})
 public class Categorias {
 	private String id;
 	private String tipo;
@@ -13,26 +17,27 @@ public class Categorias {
 	}
 
 	//getters e setters
+	@JsonGetter("id")
 	public String getId() {
 		return id;
 	}
-
+	@JsonProperty("id")
 	public void setId(String id) {
 		this.id = id;
 	}
-
+	@JsonGetter("tipo")
 	public String getTipo() {
 		return tipo;
 	}
-
+	@JsonProperty("tipo")
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-
+	@JsonGetter("descricao")
 	public String getDescricao() {
 		return descricao;
 	}
-
+	@JsonProperty("descricao")
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}

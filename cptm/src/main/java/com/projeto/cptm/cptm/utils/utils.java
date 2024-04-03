@@ -54,7 +54,6 @@ public class Utils {
         }
     }
 
-    // Outros métodos conforme necessário
 
     @GetMapping("signup/{user}/{pass}")
     public ResponseEntity<?> lerSignup(@PathVariable("user") String user, @PathVariable("pass") String pass){

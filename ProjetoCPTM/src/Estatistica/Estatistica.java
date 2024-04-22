@@ -3,7 +3,6 @@ package Estatistica;
 
 public abstract class Estatistica {
     public abstract void iptv();
-    public abstract void tempoReparo();
 }
 
 //Para manutencao 

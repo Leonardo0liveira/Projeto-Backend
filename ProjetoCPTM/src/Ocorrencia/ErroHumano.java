@@ -33,7 +33,7 @@ public class ErroHumano extends Ocorrencia{
             break;
         case "maquinista":
         @Override 
-        public void medidaDisciplinar(){
+        public void medidaDisciplinar(){  
             System.out.println("Maquinista:");
             super.medidaDisciplinar;
             qntErroMaquinista++;

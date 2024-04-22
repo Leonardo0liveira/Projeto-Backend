@@ -7,20 +7,21 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+//import org.springframework.web.bind.annotation.PutMapping;
+//import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.projeto.cptm.cptm.Login;
+//import com.projeto.cptm.cptm.Login;
 
 
 
 @RestController
 @RequestMapping("/login")
 public class Utils {
-    private Login loginService;
+    //private Login loginService;
 
     @GetMapping("login/{user}/{pass}")
     public ResponseEntity<?> lerLogin(@PathVariable("user") String user, @PathVariable("pass") String pass){
@@ -40,6 +41,7 @@ public class Utils {
 
             // Criar o ObjectMapper para desserializar o arquivo JSON
             ObjectMapper mapper = new ObjectMapper();
+            @SuppressWarnings("unchecked")
             HashMap<String, String> credenciais = mapper.readValue(file, HashMap.class);
 
             // Obter usuário e senha do arquivo JSON

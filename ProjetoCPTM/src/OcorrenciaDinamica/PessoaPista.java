@@ -21,7 +21,7 @@ public class PessoaPista{
        public void infoPassageiro(){ 
         System.out.println("Informe  a ocorrência aos passageiros");
     } 
-
+}
 // Metodos Inativos
 
 // Getters e Setters

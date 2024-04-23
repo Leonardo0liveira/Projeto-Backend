@@ -2,7 +2,7 @@ package OcorrenciaEstatica;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Lisit;
+import java.util.List;
 
 public class Manutencao extends Ocorrencia{
     private String manutencaoId, cnpjEmpresa;

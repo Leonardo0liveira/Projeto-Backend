@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ErroHumano extends Ocorrencia{
+public abstract class ErroHumano{
     private String erroHumanoId;
     private static int qntErroHumano = 0;
     private boolean operador;

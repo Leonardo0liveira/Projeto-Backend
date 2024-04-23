@@ -10,7 +10,7 @@ import java.util.List;
         System.out.println("Informe  a ocorrência aos passageiros");
     }
 */
-public class EventoExterno{
+public abstract class EventoExterno{
 
 }
 /* 

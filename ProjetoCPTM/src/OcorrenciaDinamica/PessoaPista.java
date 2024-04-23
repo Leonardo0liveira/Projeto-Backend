@@ -3,7 +3,7 @@ import OcorrenciaEstatica.Ocorrencia;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PessoaPista{
+public abstract class PessoaPista{
     private static int qntPessoaPista;
     private static List<PessoaPista> listaPessoaPista = new ArrayList<>();
 

@@ -54,5 +54,41 @@ public class Estacao {
 	public void setOcorrencias(List<Ocorrencia> ocorrencias) {
 		this.ocorrencias = ocorrencias;
 	}
+
+	//metodos
+	public void adicionarOcorrencia(Ocorrencia ocorrencia) {
+		if (ocorrencia != null && !ocorrencias.contains(ocorrencia)) {
+			ocorrencias.add(ocorrencia);
+		}
+	}
+
+	public void removerOcorrencia(Ocorrencia ocorrencia) {
+		ocorrencias.remove(ocorrencia);
+	}
+
+	public Ocorrencia buscarOcorrenciaPorId(String id) {
+		for (Ocorrencia ocorrencia : ocorrencias) {
+			if (ocorrencia.getId().equals(id)) {
+				return ocorrencia;
+			}
+		}
+		return null;
+	}
+
+	public List<Ocorrencia> listarOcorrencias() {
+		return new ArrayList<>(ocorrencias);
+	}
+
+	public void atualizarOcorrencia(Ocorrencia ocorrenciaAtualizada) {
+		for (int i = 0; i < ocorrencias.size(); i++) {
+			if (ocorrencias.get(i).getId().equals(ocorrenciaAtualizada.getId())) {
+				ocorrencias.set(i, ocorrenciaAtualizada);
+				return;
+			}
+		}
+	}
+	
+	
+	
 	
 }

@@ -2,9 +2,7 @@ package com.projeto.cptm.cptm;
 
 import java.util.List;
 
-//import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.bind.annotation.RestController;
 
 
 //import java.util.ArrayList;
@@ -13,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 //import com.fasterxml.jackson.annotation.JsonSetter;
 
-//sugestão
+
 @JsonPropertyOrder({"id", "tipo", "descricao", "estacao", "categoria"})
 public class Ocorrencia {
 	@SuppressWarnings("unused")
@@ -32,8 +30,8 @@ public class Ocorrencia {
 
 	//getters e setters
 	@JsonGetter("id")
-	public String getId(@RequestParam("id") String id) {
-		return "ID: " + id;
+	public String getId() {
+		return id;
 	}
 
 	@JsonProperty("id")

@@ -1,5 +1,5 @@
-package OcorrenciaDinamica;
-import OcorrenciaEstatica.Ocorrencia;
+package com.projeto.cptm.cptm.OcorrenciaDinamica;
+import com.projeto.cptm.cptm.OcorrenciaEstatica.Ocorrencia;
 import java.util.ArrayList;
 import java.util.List;
 

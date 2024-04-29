@@ -1,6 +1,6 @@
-package OcorrenciaDinamica;
+package com.projeto.cptm.cptm.OcorrenciaDinamica;
 
-import OcorrenciaEstatica.Ocorrencia;
+import com.projeto.cptm.cptm.OcorrenciaEstatica.Ocorrencia;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,16 @@ public abstract class ErroHumano{
     private boolean operador;
     private boolean maquinista;
     private boolean passageiro;
+    private boolean ocorre;
+    private LocalDateTime inicio, fim;
     private static List<ErroHumano> listaErroHumano = new ArrayList<>();
+    private ErroHumano erroHumano;
 
     public ErroHumano(boolean ocorre, String erroHumanoId, LocalDateTime inicio, LocalDateTime fim){
-        super(ocorre, inicio, fim);
+        this.ocorre = ocorre;
         this.erroHumanoId = erroHumanoId;
-        this.listaErroHumano.add(this);
+        this.inicio = inicio;
+        this.fim = fim;
     }
     
     // Métodos Ativos
@@ -45,46 +49,11 @@ public abstract class ErroHumano{
     public void infoPassageiro(){
     }
 
+    public void insertErroHumano(){
+        listaErroHumano.add(erroHumano);
+    }
+
     
     //Getters e Setters 
-    public boolean isOperador() {
-        return operador;
-    }
-
-    public void setOperador(boolean operador) {
-        this.operador = operador;
-    }
-
-    public boolean isMaquinista() {
-        return maquinista;
-    }
-
-    public void setMaquinista(boolean maquinista) {
-        this.maquinista = maquinista;
-    }
-
-    public boolean isPassageiro() {
-        return passageiro;
-    }
-
-    public void setPassageiro(boolean passageiro) {
-        this.passageiro = passageiro;
-    }
-
-    public String getErroHumanoId() {
-        return erroHumanoId;
-    }
-
-    public void setErroHumanoId(String erroHumanoId) {
-        this.erroHumanoId = erroHumanoId;
-    }
-
-    public static List<ErroHumano> getListaErroHumano() {
-        return listaErroHumano;
-    }
-
-    public static void setListaErroHumano(List<ErroHumano> listaErroHumano) {
-        ErroHumano.listaErroHumano = listaErroHumano;
-    }
-     
+    
 }

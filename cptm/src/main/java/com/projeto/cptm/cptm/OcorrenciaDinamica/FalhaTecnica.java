@@ -1,4 +1,4 @@
-package OcorrenciaDinamica;
+package com.projeto.cptm.cptm.OcorrenciaDinamica;
 
 import OcorrenciaEstatica.Ocorrencia;
 import java.time.LocalDateTime;

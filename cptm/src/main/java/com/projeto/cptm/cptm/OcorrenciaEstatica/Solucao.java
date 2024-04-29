@@ -1,4 +1,4 @@
-package OcorrenciaEstatica;
+/* package com.projeto.cptm.cptm.OcorrenciaEstatica;
 
 public interface Solucao {
     void evacuacao();
@@ -11,4 +11,4 @@ public interface Solucao {
     void existeOcorrencia();
     void qntOcorrencia();
 
-}
+} */

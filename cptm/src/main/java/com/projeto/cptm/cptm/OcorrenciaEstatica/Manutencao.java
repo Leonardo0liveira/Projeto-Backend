@@ -1,4 +1,4 @@
-package OcorrenciaEstatica;
+package com.projeto.cptm.cptm.OcorrenciaEstatica;
 
 import java.time.LocalDateTime;
 
@@ -29,7 +29,9 @@ public class Manutencao extends Ocorrencia{
     }
 
     // Métodos inativos 
-    public void evacucao() {
+    @Override
+    public void evacuacao() {
+        
     }
 
     public void chamaEquipe() {

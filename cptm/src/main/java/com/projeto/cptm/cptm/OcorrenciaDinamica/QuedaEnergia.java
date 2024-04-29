@@ -1,4 +1,4 @@
-package OcorrenciaDinamica;
+package com.projeto.cptm.cptm.OcorrenciaDinamica;
 
 public class QuedaEnergia {
 

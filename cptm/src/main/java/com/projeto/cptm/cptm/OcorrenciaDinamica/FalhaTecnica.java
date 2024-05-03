@@ -1,4 +1,4 @@
-package com.projeto.cptm.cptm.OcorrenciaDinamica;
+/* package com.projeto.cptm.cptm.OcorrenciaDinamica;
 
 import OcorrenciaEstatica.Ocorrencia;
 import java.time.LocalDateTime;
@@ -9,3 +9,4 @@ public abstract class FalhaTecnica{
     
 }
 
+ */

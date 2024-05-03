@@ -1,4 +1,4 @@
-package com.projeto.cptm.cptm.OcorrenciaEstatica;
+/* package com.projeto.cptm.cptm.OcorrenciaEstatica;
 
 import java.time.LocalDateTime;
 
@@ -84,3 +84,4 @@ public class Manutencao extends Ocorrencia{
         Manutencao.qntManutencao = qntManutencao;
     }
 }
+ */

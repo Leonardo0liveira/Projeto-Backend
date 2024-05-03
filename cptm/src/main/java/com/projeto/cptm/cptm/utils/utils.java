@@ -1,54 +1,45 @@
 package com.projeto.cptm.cptm.utils;
 
-import java.io.File;
-import java.util.HashMap;
-
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-//import org.springframework.web.bind.annotation.PutMapping;
-//import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-//import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import com.projeto.cptm.cptm.Login;
 
-
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/")
 public class Utils {
-    //private Login loginService;
 
-    @GetMapping("login/{user}/{pass}")
-    public ResponseEntity<?> lerLogin(@PathVariable("user") String user, @PathVariable("pass") String pass){
+    @Autowired
+    private ResourceLoader resourceLoader;
+
+    @PostMapping("/login/{user}/{pass}")
+    public ResponseEntity<?> lerLogin(@PathVariable("user") String user, @PathVariable("pass") String pass) {
         boolean check = verificar(user, pass);
-        if(check){
+        if (check) {
             return ResponseEntity.ok("Login bem-sucedido.");
-        }else{
+        } else {
             return ResponseEntity.badRequest().body("Usuário ou senha incorretos.");
         }
     }
 
-    // Supõe-se que esse método seria aprimorado para verificar os dados de login corretamente
-    public boolean verificar(String usuario, String password){
+    public boolean verificar(String usuario, String password) {
         try {
-            // Carregar o arquivo JSON contendo as credenciais
-            File file = new ClassPathResource("static/login.json").getFile();
-
-            // Criar o ObjectMapper para desserializar o arquivo JSON
+            File file = resourceLoader.getResource("classpath:static/login.json").getFile();
             ObjectMapper mapper = new ObjectMapper();
             @SuppressWarnings("unchecked")
             HashMap<String, String> credenciais = mapper.readValue(file, HashMap.class);
-
-            // Obter usuário e senha do arquivo JSON
             String userJson = credenciais.get("user");
             String passJson = credenciais.get("pass");
-
-            //Verificar se as credenciais fornecidas correspondem às do arquivo JSON
             return usuario.equals(userJson) && password.equals(passJson);
         } catch (Exception e) {
             e.printStackTrace();
@@ -56,35 +47,37 @@ public class Utils {
         }
     }
 
-
-    @GetMapping("signup/{user}/{pass}")
-    public ResponseEntity<?> lerSignup(@PathVariable("user") String user, @PathVariable("pass") String pass){
+    @PostMapping("/signup/{user}/{pass}")
+    public ResponseEntity<?> lerSignup(@PathVariable("user") String user, @PathVariable("pass") String pass) throws IOException {
         boolean check = verificar(user, pass);
-        if(check){
-            return ResponseEntity.ok("Login bem-sucedido.");
-        }else{
+        if (check) {
+            return ResponseEntity.badRequest().body("Usuário já existe.");
+        } else {
             escreverNoArquivoJson(user, pass);
             return ResponseEntity.ok("Usuário e senha cadastrados.");
         }
     }
 
-    public void escreverNoArquivoJson(String usuario, String senha) {
+    /* public void escreverNoArquivoJson(String usuario, String senha) {
         try {
-            // Define o local do arquivo. Use ClassPathResource para ler e File para escrever.
-            File file = new ClassPathResource("static/login.json").getFile();
-            
-            // Prepara os dados para serem escritos. Neste exemplo, substituímos quaisquer dados existentes.
+            File file = resourceLoader.getResource("classpath:static/login.json").getFile();
             HashMap<String, String> credenciais = new HashMap<>();
             credenciais.put("user", usuario);
             credenciais.put("pass", senha);
-
-            // Cria um ObjectMapper e escreve os dados no arquivo
             ObjectMapper mapper = new ObjectMapper();
+            // Convert HashMap to JSON and write to file
             mapper.writeValue(file, credenciais);
-
             System.out.println("Dados escritos com sucesso no arquivo JSON.");
         } catch (Exception e) {
             e.printStackTrace();
+            System.err.println("Erro ao escrever no arquivo JSON: " + e.getMessage());
         }
+    } */
+    
+    public void escreverNoArquivoJson(String usuario, String senha) throws IOException {
+        String filePath = resourceLoader.getResource("classpath:static/login.json").getFile().getPath();
+        JsonFileWriter jsonFileWriter = new JsonFileWriter(filePath);
+        jsonFileWriter.writeLogin(usuario, senha);
     }
+    
 }

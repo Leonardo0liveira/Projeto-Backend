@@ -1,4 +1,4 @@
-package com.projeto.cptm.cptm.OcorrenciaDinamica;
+/* package com.projeto.cptm.cptm.OcorrenciaDinamica;
 
 import com.projeto.cptm.cptm.OcorrenciaEstatica.Ocorrencia;
 import java.time.LocalDateTime;
@@ -57,3 +57,4 @@ public abstract class ErroHumano{
     //Getters e Setters 
     
 }
+ */

@@ -1,4 +1,4 @@
-package com.projeto.cptm.cptm.OcorrenciaDinamica;
+/* package com.projeto.cptm.cptm.OcorrenciaDinamica;
 import OcorrenciaEstatica.Ocorrencia;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,3 +25,4 @@ public abstract class PessoaPista{
 // Metodos Inativos
 
 // Getters e Setters
+ */

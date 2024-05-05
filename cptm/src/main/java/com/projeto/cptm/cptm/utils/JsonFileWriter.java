@@ -37,4 +37,27 @@ public class JsonFileWriter {
             System.err.println("Error writing login data to file: " + e.getMessage());
         }
     }
+
+    public void writeLinhas(String id, String nome, String estacoes) {
+        try {
+            // Create a HashMap to represent the linhas data
+            HashMap<String, String> linhasData = new HashMap<>();
+            linhasData.put("id", id);
+            linhasData.put("nome", nome);
+            linhasData.put("estacoes", estacoes);
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            String json = objectMapper.writeValueAsString(linhasData);
+
+            // Write the JSON string to the file
+            FileWriter fileWriter = new FileWriter(filePath);
+            fileWriter.write(json);
+            fileWriter.close();
+
+            System.out.println("Linhas data written to file: " + filePath);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Error writing linhas data to file: " + e.getMessage());
+        }
+    }
 }

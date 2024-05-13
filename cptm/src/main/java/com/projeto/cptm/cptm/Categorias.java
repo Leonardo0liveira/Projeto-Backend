@@ -1,5 +1,7 @@
 package com.projeto.cptm.cptm;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
@@ -17,6 +19,7 @@ public class Categorias {
 	}
 
 	//getters e setters
+	@Document(collection = "categorias")
 	@JsonGetter("id")
 	public String getId() {
 		return id;

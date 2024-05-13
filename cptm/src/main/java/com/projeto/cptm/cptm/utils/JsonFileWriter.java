@@ -1,11 +1,9 @@
 package com.projeto.cptm.cptm.utils;
-
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.HashMap;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
 
 public class JsonFileWriter {
 
@@ -37,9 +35,9 @@ public class JsonFileWriter {
             System.err.println("Error writing login data to file: " + e.getMessage());
         }
     }
-
     public void writeLinhas(String id, String nome, String estacoes) {
         try {
+            //InputStream inputStream = new FileInputStream("/Users/stefano/Documents/Ibmec/Back End/Eclipse Workspace Projeto/Projeto-Backend/cptm/src/main/resources/static/linhas.json");
             // Create a HashMap to represent the linhas data
             HashMap<String, String> linhasData = new HashMap<>();
             linhasData.put("id", id);
@@ -50,11 +48,19 @@ public class JsonFileWriter {
             String json = objectMapper.writeValueAsString(linhasData);
 
             // Write the JSON string to the file
-            FileWriter fileWriter = new FileWriter(filePath);
-            fileWriter.write(json);
-            fileWriter.close();
+            //if (inputStream.read() == -1) {
+                //File linhas = new File(filePath);
+                //linhas.createNewFile();
+                //writeLinhas(f, id, nome, estacoes);
+            //}else{
+                FileWriter fileWriter = new FileWriter(filePath);
+                fileWriter.write(json);
+                fileWriter.close();
+                System.out.println("Linhas data written to file: " + filePath);
+            //}
+            
 
-            System.out.println("Linhas data written to file: " + filePath);
+            
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println("Error writing linhas data to file: " + e.getMessage());

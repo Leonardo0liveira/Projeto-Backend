@@ -8,6 +8,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @Document(collection = "categorias")
 @JsonPropertyOrder({"id", "tipo", "descricao"})
+@Document(collection = "categorias")
 public class Categorias {
 	private String id;
 	private String tipo;
@@ -20,7 +21,10 @@ public class Categorias {
 	}
 
 	//getters e setters
+<<<<<<< HEAD
+=======
 	
+>>>>>>> 97cf9e7a1736fd577e0dc99b6642766502f91a2d
 	@JsonGetter("id")
 	public String getId() {
 		return id;

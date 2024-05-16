@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
-
+@Document(collection = "estacoes")
 @JsonPropertyOrder({"id", "nome", "localizacao", "ocorrencias"})
 @Document(collection = "estacao" )
 public class Estacao {

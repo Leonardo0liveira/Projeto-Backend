@@ -1,9 +1,12 @@
 package com.projeto.cptm.cptm;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+@Document(collection = "login")
 @JsonPropertyOrder({"user", "pass"})
 public class Login {
     private String user;

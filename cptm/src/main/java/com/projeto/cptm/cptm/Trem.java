@@ -5,11 +5,16 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.ArrayList;
 
 @JsonPropertyOrder({"id", "nome", "capacidade", "estacoes"})
+@Document(collection = "trens")
 public class Trem {
+	@Id
 	private String id;
 	private String nome;
 	private int capacidade;
@@ -55,4 +60,5 @@ public class Trem {
 		this.estacoes = estacoes;
 	}
 	
+
 }

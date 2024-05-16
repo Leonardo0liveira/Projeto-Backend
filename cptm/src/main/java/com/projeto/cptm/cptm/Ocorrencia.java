@@ -1,5 +1,6 @@
 package com.projeto.cptm.cptm;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -18,14 +19,16 @@ public class Ocorrencia {
 	private String id;
 	private String tipo;
 	private String descricao;
-	private Estacao estacao;
-	private List<Categorias> categoria;
+	private LocalDateTime inicio;
+    private LocalDateTime fim;
+
 	
-	public Ocorrencia(String id, String tipo, String descricao,Estacao estacao){
+	public Ocorrencia(String id, String tipo, String descricao, LocalDateTime inicio, LocalDateTime fim){
 		this.id = id;
 		this.tipo = tipo;
 		this.descricao = descricao;
-		this.estacao = estacao;
+		this.inicio = inicio;
+		this.fim = fim;
 	}
 
 	//getters e setters
@@ -59,26 +62,23 @@ public class Ocorrencia {
 		this.descricao = descricao;
 	}
 
-	@JsonGetter("estacao")
-	public Estacao getEstacao() {
-		return estacao;
-	}
-
-	@JsonProperty("estacao")
-	public void setEstacao(Estacao estacao) {
-		this.estacao = estacao;
-	}
-
-	@JsonGetter("categoria")
-	public List<Categorias> getCategoria() {
-		return categoria;
-	}
-
-	@JsonProperty("categoria")
-	public void setCategoria(List<Categorias> categoria) {
-		this.categoria = categoria;
+	@JsonProperty("inicio")
+	public void setInicio(LocalDateTime inicio){
+		this.inicio = inicio ;
 	}
 	
+	@JsonProperty("inicio")
+	public LocalDateTime getInicio(LocalDateTime inicio){
+		return inicio;
+	}
 	
+	@JsonProperty("fim")
+	public void setFim(LocalDateTime fim){
+		this.fim = fim ;
+	}
 	
+	@JsonProperty("fim")
+	public LocalDateTime getFim(LocalDateTime fim){
+		return fim;
+	}
 }

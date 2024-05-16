@@ -2,8 +2,7 @@ package com.projeto.cptm.cptm;
 
 import java.util.List;
 
-
-
+import org.springframework.data.mongodb.core.mapping.Document;
 
 //import java.util.ArrayList;
 import com.fasterxml.jackson.annotation.JsonGetter;
@@ -11,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 //import com.fasterxml.jackson.annotation.JsonSetter;
 
-
+@Document(collection = "ocorrencias")
 @JsonPropertyOrder({"id", "tipo", "descricao", "estacao", "categoria"})
 public class Ocorrencia {
 	@SuppressWarnings("unused")

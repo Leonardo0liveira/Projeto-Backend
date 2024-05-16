@@ -2,12 +2,14 @@ package com.projeto.cptm.cptm;
 //sugestão
 import java.util.List;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
-
+@Document(collection = "estacoes")
 @JsonPropertyOrder({"id", "nome", "localizacao", "ocorrencias"})
 public class Estacao {
 	private String id;

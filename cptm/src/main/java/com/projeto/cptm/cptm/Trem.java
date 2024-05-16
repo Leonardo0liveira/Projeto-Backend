@@ -15,8 +15,7 @@ import java.util.ArrayList;
 
 @Document(collection = "trens")
 @JsonPropertyOrder({"id", "nome", "capacidade", "estacoes"})
-@Document(collection = "trens")
-public class Trem {
+public class Trem extends Ocorrencia{
 	@Id
 	private String id;
 	private String nome;

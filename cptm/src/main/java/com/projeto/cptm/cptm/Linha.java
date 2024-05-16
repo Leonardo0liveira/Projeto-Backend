@@ -12,12 +12,12 @@ import java.util.ArrayList;
 
 @Document(collection = "linhas")
 @JsonPropertyOrder({"id", "nome", "estacoes"})
-public class Linha {
+public class Linha extends Ocorrencia{
 	private String id;
 	private String nome;
 	private List<Estacao> estacoes;
 	
-	public Linha(String id,String nome){
+	public Linha(String id, String nome){
 		this.id = id;
 		this.nome = nome;
 		this.estacoes = new ArrayList<>();

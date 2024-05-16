@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.ArrayList;
 @Document(collection = "estacoes")
 @JsonPropertyOrder({"id", "nome", "localizacao", "ocorrencias"})
-public class Estacao {
+public class Estacao extends Ocorrencia{
 	private String id;
 	private String nome;
 	private String localizacao;

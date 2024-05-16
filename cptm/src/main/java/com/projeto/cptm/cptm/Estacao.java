@@ -8,30 +8,22 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 @Document(collection = "estacoes")
 @JsonPropertyOrder({"id", "nome", "localizacao", "ocorrencias"})
 public class Estacao extends Ocorrencia{
-	private String id;
 	private String nome;
 	private String localizacao;
 	private List<Ocorrencia> ocorrencias;
 	
-	public Estacao(String id,String nome,String localizacao){
-		this.id = id;
+	public Estacao(String id, String tipo, String descricao, LocalDateTime inicio, LocalDateTime fim, String nome, String localizacao){
+		super(id, tipo, descricao, inicio, fim);
 		this.nome = nome;
 		this.localizacao = localizacao;
 		this.ocorrencias = new ArrayList<>();
 	}
 	//getters e setters
-	@JsonGetter("id")
-	public String getId() {
-		return id;
-	}
-	@JsonProperty("id")
-	public void setId(String id) {
-		this.id = id;
-	}
 	@JsonGetter("nome")
 	public String getNome() {
 		return nome;

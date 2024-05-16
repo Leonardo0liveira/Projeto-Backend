@@ -11,32 +11,22 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Document(collection = "trens")
 @JsonPropertyOrder({"id", "nome", "capacidade", "estacoes"})
 public class Trem extends Ocorrencia{
-	@Id
-	private String id;
 	private String nome;
 	private int capacidade;
 	private List<Estacao> estacoes;
 	
-	public Trem(String id,String nome,int capacidade){
-		this.id = id;
-		this.nome = nome;
+	public Trem(String id, String tipo, String descricao, LocalDateTime inicio, LocalDateTime fim, int capacidade, List<Estacao> estacoes){
+		super(id, tipo, descricao, inicio, fim); // Explicitly invoke the constructor of the superclass Ocorrencia
 		this.capacidade = capacidade;
 		this.estacoes = new ArrayList<>();
 	}
 	//getters e setters
-	@JsonGetter("id")
-	public String getId() {
-		return id;
-	}
-	@JsonProperty("id")
-	public void setId(String id) {
-		this.id = id;
-	}
 	@JsonGetter("nome")
 	public String getNome() {
 		return nome;

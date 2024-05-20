@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.ArrayList;
 
-@Document(collection = "trens")
 @JsonPropertyOrder({"id", "nome", "capacidade", "estacoes"})
 @Document(collection = "trens")
 public class Trem {

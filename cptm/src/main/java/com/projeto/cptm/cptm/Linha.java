@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.util.ArrayList;
 
-@Document(collection = "linhas")
 @JsonPropertyOrder({"id", "nome", "estacoes"})
 @Document(collection = "linha")
 public class Linha {

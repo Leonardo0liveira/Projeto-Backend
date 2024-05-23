@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 //import com.fasterxml.jackson.annotation.JsonSetter;
 
 
-@JsonPropertyOrder({"id", "tipo", "descricao", "incio", "fim"})
+@JsonPropertyOrder({"id", "tipo", "descricao", "incio", "fim"}) 
 @Document(collection = "ocorrencia")
 public class Ocorrencia {
 	@SuppressWarnings("unused")

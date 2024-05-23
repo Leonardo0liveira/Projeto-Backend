@@ -10,7 +10,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-@Document(collection = "estacoes")
 @JsonPropertyOrder({"id", "nome", "localizacao", "ocorrencias"})
 public class Estacao extends Ocorrencia{
 	private String nome;

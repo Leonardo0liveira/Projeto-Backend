@@ -11,7 +11,6 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-@Document(collection = "linhas")
 @JsonPropertyOrder({"id", "nome", "estacoes"})
 public class Linha extends Ocorrencia{
 	private String nome;

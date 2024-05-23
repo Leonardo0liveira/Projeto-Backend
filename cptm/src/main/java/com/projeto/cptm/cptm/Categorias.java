@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@Document(collection = "categorias")
+
 @JsonPropertyOrder({"id", "tipo", "descricao"})
 public class Categorias {
 	private String id;

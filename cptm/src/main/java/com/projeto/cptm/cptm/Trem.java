@@ -14,7 +14,6 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-@Document(collection = "trens")
 @JsonPropertyOrder({"id", "nome", "capacidade", "estacoes"})
 public class Trem extends Ocorrencia{
 	private String nome;

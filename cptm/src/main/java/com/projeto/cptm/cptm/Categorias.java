@@ -1,4 +1,4 @@
-package com.projeto.cptm.cptm;
+/* package com.projeto.cptm.cptm;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -46,3 +46,4 @@ public class Categorias {
 	}
 	
 }
+ */

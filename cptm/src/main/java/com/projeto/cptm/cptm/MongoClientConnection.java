@@ -2,7 +2,7 @@ package com.projeto.cptm.cptm;
 
 import com.mongodb.ConnectionString;
 import com.mongodb.MongoClientSettings;
-import com.mongodb.MongoException;
+import com.mongodb.MongoException; // Add this import statement
 import com.mongodb.ServerApi;
 import com.mongodb.ServerApiVersion;
 import com.mongodb.client.MongoClient;

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import com.projeto.cptm.cptm.Ocorrencia;
 import com.projeto.cptm.cptm.utils.OcorrenciaService;
 
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 @RestController
@@ -44,5 +45,10 @@ public class OcorrenciaController {
     @GetMapping("/tipo/{tipo}")
     public List<Ocorrencia> getOcorrenciasByTipo(@PathVariable String tipo) {
         return ocorrenciaService.findByTipo(tipo);
+    }
+
+    @GetMapping("/estatisticas")
+    public DoubleSummaryStatistics getEstatisticas() {
+        return ocorrenciaService.calculateStatistics();
     }
 }

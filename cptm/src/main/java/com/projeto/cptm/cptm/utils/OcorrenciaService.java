@@ -6,7 +6,9 @@ import org.springframework.stereotype.Service;
 import com.projeto.cptm.cptm.Ocorrencia;
 import com.projeto.cptm.cptm.repositorios.OcorrenciaRepository;
 
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class OcorrenciaService {
@@ -32,5 +34,17 @@ public class OcorrenciaService {
 
     public List<Ocorrencia> findByTipo(String tipo) {
         return ocorrenciaRepository.findByTipo(tipo);
+    }
+
+    public DoubleSummaryStatistics calculateStatistics() {
+        List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAll();
+        // Supondo que você está calculando estatísticas com base na duração das ocorrências
+        List<Long> durations = ocorrencias.stream()
+            .filter(o -> o.getInicio() != null && o.getFim() != null)
+            .map(o -> java.time.Duration.between(o.getInicio(), o.getFim()).toMinutes())
+            .collect(Collectors.toList());
+
+        return durations.stream()
+            .collect(Collectors.summarizingDouble(Long::doubleValue));
     }
 }

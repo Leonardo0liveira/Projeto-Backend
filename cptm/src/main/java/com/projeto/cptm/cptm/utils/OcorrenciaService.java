@@ -2,7 +2,6 @@ package com.projeto.cptm.cptm.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.projeto.cptm.cptm.Ocorrencia;
 import com.projeto.cptm.cptm.repositorios.OcorrenciaRepository;
 
@@ -46,5 +45,10 @@ public class OcorrenciaService {
 
         return durations.stream()
             .collect(Collectors.summarizingDouble(Long::doubleValue));
+    }
+
+    public OcorrenciaEstatistica calculateExtendedStatistics() {
+        List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAll();
+        return OcorrenciaEstatistica.calculate(ocorrencias);
     }
 }

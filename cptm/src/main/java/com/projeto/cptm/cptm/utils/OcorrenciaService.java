@@ -41,7 +41,7 @@ public class OcorrenciaService {
     public List<Ocorrencia> findByTipo(String tipo) {
         return ocorrenciaRepository.findByTipo(tipo);
     }
-    
+
     private Map<String, Integer> createMapping(List<String> categories) {
         Map<String, Integer> mapping = new HashMap<>();
         int index = 0;
@@ -53,7 +53,7 @@ public class OcorrenciaService {
         return mapping;
     }
 
-    public DoubleSummaryStatistics calculateStatistics() {
+    public DoubleSummaryStatistics calculateAverageDuration() {
         List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAll();
         // Supondo que você está calculando estatísticas com base na duração das ocorrências
         List<Long> durations = ocorrencias.stream()

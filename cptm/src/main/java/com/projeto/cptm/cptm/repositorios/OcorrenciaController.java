@@ -50,9 +50,9 @@ public class OcorrenciaController {
 
     @GetMapping("/estatisticas")
     public DoubleSummaryStatistics getEstatisticas() {
-        return ocorrenciaService.calculateStatistics();
+        return ocorrenciaService.calculateAverageDuration();
     }
-    
+
     @GetMapping("/correlation")
     public ResponseEntity<Double> getCorrelation() {
         double correlation = ocorrenciaService.calculateCorrelation();

@@ -67,7 +67,7 @@ public class OcorrenciaService {
 
     public double calculateCorrelationTremLinha() {
         List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAll();
-        Map<String, Integer> lineMapping = createMapping(ocorrencias.stream().map(Ocorrencia::getLine).collect(Collectors.toList()));
+        Map<String, Integer> lineMapping = createMapping(ocorrencias.stream().map(Ocorrencia::getTipo()).collect(Collectors.toList()));
         Map<String, Integer> trainMapping = createMapping(ocorrencias.stream().map(Ocorrencia::getTrain).collect(Collectors.toList()));
 
         double[] lines = ocorrencias.stream().mapToDouble(o -> lineMapping.get(o.getLine())).toArray();

@@ -1,6 +1,7 @@
 package com.projeto.cptm.cptm.repositorios;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.projeto.cptm.cptm.Ocorrencia;
@@ -50,5 +51,11 @@ public class OcorrenciaController {
     @GetMapping("/estatisticas")
     public DoubleSummaryStatistics getEstatisticas() {
         return ocorrenciaService.calculateStatistics();
+    }
+    
+    @GetMapping("/correlation")
+    public ResponseEntity<Double> getCorrelation() {
+        double correlation = ocorrenciaService.calculateCorrelation();
+        return ResponseEntity.ok(correlation);
     }
 }

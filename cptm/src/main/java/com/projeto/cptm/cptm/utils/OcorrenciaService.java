@@ -6,9 +6,15 @@ import org.springframework.stereotype.Service;
 import com.projeto.cptm.cptm.Ocorrencia;
 import com.projeto.cptm.cptm.repositorios.OcorrenciaRepository;
 
+import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
+
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.Map;
+import java.util.HashMap;
+
+
 
 @Service
 public class OcorrenciaService {
@@ -35,6 +41,17 @@ public class OcorrenciaService {
     public List<Ocorrencia> findByTipo(String tipo) {
         return ocorrenciaRepository.findByTipo(tipo);
     }
+    
+    private Map<String, Integer> createMapping(List<String> categories) {
+        Map<String, Integer> mapping = new HashMap<>();
+        int index = 0;
+        for (String category : categories) {
+            if (!mapping.containsKey(category)) {
+                mapping.put(category, index++);
+            }
+        }
+        return mapping;
+    }
 
     public DoubleSummaryStatistics calculateStatistics() {
         List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAll();
@@ -47,4 +64,29 @@ public class OcorrenciaService {
         return durations.stream()
             .collect(Collectors.summarizingDouble(Long::doubleValue));
     }
+
+    public double calculateCorrelationTremLinha() {
+        List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAll();
+        Map<String, Integer> lineMapping = createMapping(ocorrencias.stream().map(Ocorrencia::getLine).collect(Collectors.toList()));
+        Map<String, Integer> trainMapping = createMapping(ocorrencias.stream().map(Ocorrencia::getTrain).collect(Collectors.toList()));
+
+        double[] lines = ocorrencias.stream().mapToDouble(o -> lineMapping.get(o.getLine())).toArray();
+        double[] trains = ocorrencias.stream().mapToDouble(o -> trainMapping.get(o.getTrain())).toArray();
+
+        PearsonsCorrelation pearsonsCorrelation = new PearsonsCorrelation();
+        return pearsonsCorrelation.correlation(lines, trains);
+    }
+
+    public double calculateCorrelationTimeTremLinha() {
+        List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAll();
+        Map<Long, Integer> timeMapping = createMappingTime(ocorrencias.stream().map(Ocorrencia::getInicio).collect(Collectors.toList()));
+        Map<String, Integer> lineMapping = createMappingLine(ocorrencias.stream().map(Ocorrencia::getLine).collect(Collectors.toList()));
+
+        double[] times = ocorrencias.stream().mapToDouble(o -> timeMapping.get(o.getInicio())).toArray();
+        double[] lines = ocorrencias.stream().mapToDouble(o -> lineMapping.get(o.getLine())).toArray();
+
+        PearsonsCorrelation pearsonsCorrelation = new PearsonsCorrelation();
+        return pearsonsCorrelation.correlation(times, lines);
+    }
+    
 }

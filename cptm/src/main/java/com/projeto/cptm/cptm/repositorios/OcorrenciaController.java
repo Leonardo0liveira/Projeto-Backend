@@ -55,7 +55,7 @@ public class OcorrenciaController {
 
     @GetMapping("/correlation")
     public ResponseEntity<Double> getCorrelation() {
-        double correlation = ocorrenciaService.calculateCorrelation();
+        double correlation = ocorrenciaService.calculateCorrelationTremLinha();
         return ResponseEntity.ok(correlation);
     }
 }

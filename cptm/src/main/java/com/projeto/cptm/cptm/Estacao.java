@@ -17,7 +17,7 @@ public class Estacao extends Ocorrencia{
 	private List<Ocorrencia> ocorrencias;
 	
 	public Estacao(String id, String tipo, String descricao, LocalDateTime inicio, LocalDateTime fim, String nome, String localizacao){
-		super(id, tipo, descricao, inicio, fim);
+		super(id, tipo, descricao, inicio, fim, null, null);
 		this.nome = nome;
 		this.localizacao = localizacao;
 		this.ocorrencias = new ArrayList<>();

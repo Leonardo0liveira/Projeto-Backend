@@ -20,10 +20,8 @@ public class Trem extends Ocorrencia{
 	private int capacidade;
 	private List<Estacao> estacoes;
 	
-	public Trem(String id, String tipo, String descricao, LocalDateTime inicio, LocalDateTime fim, int capacidade, List<Estacao> estacoes){
-		super(id, tipo, descricao, inicio, fim); // Explicitly invoke the constructor of the superclass Ocorrencia
-		this.capacidade = capacidade;
-		this.estacoes = new ArrayList<>();
+	public Trem(String id, String tipo, String descricao, LocalDateTime inicio, LocalDateTime fim, String line, String trem){
+		super(id, tipo, descricao, inicio, fim, null, null); // Explicitly invoke the constructor of the superclass Ocorrencia
 	}
 	//getters e setters
 	@JsonGetter("nome")

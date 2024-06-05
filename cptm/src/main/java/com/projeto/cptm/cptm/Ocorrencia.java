@@ -16,16 +16,20 @@ public class Ocorrencia {
     private String descricao;
     private LocalDateTime inicio;
     private LocalDateTime fim;
+    private String line;
+    private String train;
 
     public Ocorrencia() {
     }
 
-    public Ocorrencia(String id, String tipo, String descricao, LocalDateTime inicio, LocalDateTime fim) {
+    public Ocorrencia(String id, String tipo, String descricao, LocalDateTime inicio, LocalDateTime fim, String line, String train) {
         this.id = id;
         this.tipo = tipo;
         this.descricao = descricao;
         this.inicio = inicio;
         this.fim = fim;
+        this.line = line;
+        this.train = train;
     }
 
     @JsonGetter("id")
@@ -76,5 +80,21 @@ public class Ocorrencia {
     @JsonProperty("fim")
     public void setFim(LocalDateTime fim) {
         this.fim = fim;
+    }
+
+    public String getLine(){
+        return line;
+    }
+
+    public void setLine(String line){
+        this.line = line;
+    }
+
+    public String getTrain(){
+        return train;
+    }
+    
+    public void setTrain(String train){
+        this.train = train;
     }
 }

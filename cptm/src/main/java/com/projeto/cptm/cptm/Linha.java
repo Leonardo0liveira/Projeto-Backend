@@ -17,7 +17,7 @@ public class Linha extends Ocorrencia{
 	private List<Estacao> estacoes;
 	
 	public Linha(String id, String tipo, String descricao, LocalDateTime inicio, LocalDateTime fim, String nome, List<Estacao> estacoes){
-		super(id, tipo, descricao, inicio, fim);
+		super(id, tipo, descricao, inicio, fim, nome, null);
 		this.nome = nome;
 		this.estacoes = new ArrayList<>();
 	}

@@ -9,6 +9,7 @@ import com.projeto.cptm.cptm.utils.OcorrenciaService;
 
 import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.LongSummaryStatistics;
 
 @RestController
 @RequestMapping("/ocorrencias")
@@ -49,7 +50,7 @@ public class OcorrenciaController {
     }
 
     @GetMapping("/estatisticas")
-    public DoubleSummaryStatistics getEstatisticas() {
+    public LongSummaryStatistics getEstatisticas() {
         return ocorrenciaService.calculateAverageDuration();
     }
 

@@ -3,7 +3,10 @@ package com.projeto.cptm.cptm.utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.commons.math3.stat.correlation.PearsonsCorrelation;
+
+import com.projeto.cptm.cptm.Estatisticas;
 import com.projeto.cptm.cptm.Ocorrencia;
+import com.projeto.cptm.cptm.repositorios.EstatisticasRepository;
 import com.projeto.cptm.cptm.repositorios.OcorrenciaRepository;
 import java.time.LocalDateTime;
 import java.util.DoubleSummaryStatistics;
@@ -19,6 +22,9 @@ public class OcorrenciaService {
 
     @Autowired
     private OcorrenciaRepository ocorrenciaRepository;
+
+    @Autowired
+    private EstatisticasRepository estatisticasRepository;
 
     public List<Ocorrencia> findAll() {
         return ocorrenciaRepository.findAll();
@@ -63,6 +69,7 @@ public class OcorrenciaService {
                 logger.info("Ocorrência " + o.getId() + ": início " + inicio + ", fim " + fim + ", duração " + duration + " minutos");
                 return duration;
             })
+            .filter(duration -> duration > 0 && duration < 1440) // 1440 minutos = 1 dia
             .collect(Collectors.toList());
     
         // Coleta as estatísticas resumidas das durações
@@ -77,7 +84,7 @@ public class OcorrenciaService {
         return stats;
     }
 
-    public double calculateCorrelationTremLinha() {
+    public double calculateCorrelationLineTrain() {
         List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAll();
         Map<String, Integer> lineMapping = createMapping(ocorrencias.stream().map(Ocorrencia::getLine).collect(Collectors.toList()));
         Map<String, Integer> trainMapping = createMapping(ocorrencias.stream().map(Ocorrencia::getTrain).collect(Collectors.toList()));
@@ -89,30 +96,6 @@ public class OcorrenciaService {
         return pearsonsCorrelation.correlation(lines, trains);
     }
 
-    public double calculateCorrelationTimeTremLinha() {
-        List<Ocorrencia> ocorrencias = ocorrenciaRepository.findAll();
-        Map<Long, Integer> timeMapping = createMappingTime(ocorrencias.stream().map(Ocorrencia::getInicio).collect(Collectors.toList()));
-        Map<String, Integer> lineMapping = createMapping(ocorrencias.stream().map(Ocorrencia::getLine).collect(Collectors.toList()));
-
-        double[] times = ocorrencias.stream().mapToDouble(o -> timeMapping.get(o.getInicio().toEpochSecond(java.time.ZoneOffset.UTC))).toArray();
-        double[] lines = ocorrencias.stream().mapToDouble(o -> lineMapping.get(o.getLine())).toArray();
-
-        PearsonsCorrelation pearsonsCorrelation = new PearsonsCorrelation();
-        return pearsonsCorrelation.correlation(times, lines);
-    }
-
-    private Map<Long, Integer> createMappingTime(List<LocalDateTime> times) {
-        Map<Long, Integer> mapping = new HashMap<>();
-        int index = 0;
-        for (LocalDateTime time : times) {
-            long epochSecond = time.toEpochSecond(java.time.ZoneOffset.UTC);
-            if (!mapping.containsKey(epochSecond)) {
-                mapping.put(epochSecond, index++);
-            }
-        }
-        return mapping;
-    }
-
     private Map<String, Integer> createMapping(List<String> categories) {
         Map<String, Integer> mapping = new HashMap<>();
         int index = 0;
@@ -122,5 +105,18 @@ public class OcorrenciaService {
             }
         }
         return mapping;
+    }
+
+    public Estatisticas calculateAndSaveEstatisticas() {
+        LongSummaryStatistics stats = calculateAverageDuration();
+        double correlation = calculateCorrelationLineTrain();
+
+        Estatisticas estatisticas = new Estatisticas();
+        estatisticas.setMediaDuracao(stats.getAverage());
+        estatisticas.setTotalDuracao(stats.getSum());
+        estatisticas.setNumeroOcorrencias(stats.getCount());
+        estatisticas.setCorrelacaoLineTrain(correlation);
+
+        return estatisticasRepository.save(estatisticas);
     }
 }

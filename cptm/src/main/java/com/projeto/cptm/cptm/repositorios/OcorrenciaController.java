@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.projeto.cptm.cptm.Estatisticas;
 import com.projeto.cptm.cptm.Ocorrencia;
 import com.projeto.cptm.cptm.utils.OcorrenciaService;
 
@@ -56,7 +57,12 @@ public class OcorrenciaController {
 
     @GetMapping("/correlation")
     public ResponseEntity<Double> getCorrelation() {
-        double correlation = ocorrenciaService.calculateCorrelationTremLinha();
+        double correlation = ocorrenciaService.calculateCorrelationLineTrain();
         return ResponseEntity.ok(correlation);
+    }
+
+    @PostMapping("/stats-save")
+    public Estatisticas calculateAndSaveEstatisticas() {
+        return ocorrenciaService.calculateAndSaveEstatisticas();
     }
 }
